@@ -37,5 +37,3 @@ Gradio based test code is provided. You can see the result directly
 ```shell script
 python gradio_result.py --config ./config/coco.yml --config2 ./config/bird.yml --load_dir ./output
 ```
-
-## Results
