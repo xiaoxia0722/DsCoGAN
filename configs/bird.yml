@@ -1,7 +1,7 @@
 config_name: bird
 
 dataset_name: birds
-data_dir: E:\mine\code\DFA-GAN\data\birds
+data_dir: .\data\birds
 
 gpus: '0'
 imsize: 256
@@ -12,13 +12,13 @@ num_workers: 0
 
 stamp: 'normal'
 state_epoch: 0
-epochs: 2
+epochs: 2000
 batch_size: 16
 nf: 32
 ch_size: 3
 resume_epoch: 1
 resume_model_path: ./output/
-output: ./output/test
+output: ./output/
 mode: 'train'
 tensorboard: True
 params: False
@@ -57,7 +57,7 @@ checkpoint:
 
 save_image: True
 val_save_dir: ./vals/bird/
-npz_path: E:\mine\code\DFA-GAN\data\birds/npz/bird_val256_FIDK0.npz
+npz_path: .\data\birds/npz/bird_val256_FIDK0.npz
 
 
 text:

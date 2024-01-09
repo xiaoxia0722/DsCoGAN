@@ -14,7 +14,7 @@ from torchvision import transforms
 from torch.utils.data import Dataset
 
 
-def prepare_dataset(configs, split, transform=None, norm=None):
+def prepare_datasets(configs, transform=None):
     imsize = configs['imsize']
     if transform is not None:
         image_transform = transform
@@ -29,8 +29,9 @@ def prepare_dataset(configs, split, transform=None, norm=None):
             transforms.RandomCrop(imsize),
             transforms.RandomHorizontalFlip()])
     # train dataset
-    dataset = TextImgDataset(split=split, transform=image_transform, configs=configs, norm=norm)
-    return dataset
+    train_dataset = TextImgDataset(split='train', transform=image_transform, configs=configs)
+    val_dataset = TextImgDataset(split='val', transform=image_transform, configs=configs)
+    return train_dataset, val_dataset
 
 
 class TextImgDataset(Dataset):

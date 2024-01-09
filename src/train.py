@@ -51,8 +51,6 @@ class Trainer:
         self.clip, self.preprocess = clip.load("ViT-B/32", device=self.device)
         self.text_encoder = CLIP_TXT_ENCODER(self.clip)
         self.image_encoder = CLIP_Image_Encoder(self.clip)
-        # state_dict = torch.load(self.configs['text']['damsm_name'], map_location='cpu')
-        # self.text_encoder = load_model_weights(self.text_encoder, state_dict, multi_gpus=False)
         for p in self.text_encoder.parameters():
             p.requires_grad = False
         self.text_encoder.eval()
@@ -113,9 +111,6 @@ class Trainer:
         self.s1 = np.cov(pred_arr, rowvar=False)
 
     def train(self, epoch, train_loader):
-        # self.netG.train()
-        # self.netD.train()
-        # self.netC.train()
         lens = len(train_loader)
         start = time.time()
         g_losses = []
@@ -125,7 +120,6 @@ class Trainer:
         d_fake = []
         d_real = []
         ma_gp = []
-        clip_score = []
         match_scores = []
         for step, batch in enumerate(train_loader):
             imgs, caption, keys = batch
@@ -204,7 +198,6 @@ class Trainer:
                 match_scores.append(match_score.item())
                 d_fake.append(errD_fake.item())
                 d_real.append(errD_real.item())
-                break
         return {
             'g_losses': g_losses,
             'g1_losses': g1_losses,

@@ -73,10 +73,6 @@ configs['many_gpus'] = many_gpus
 logger.info("gpu是否可用:{}, gpu是否使用:{}, 多gpu是否使用:{}, gpu使用信息:{}".format(torch.cuda.is_available(), gpus, many_gpus, device))
 
 logger.info("初始化数据集....")
-# # train dataset
-# train_dataset = prepare_dataset(configs, split='train')
-# # test dataset
-# val_dataset = prepare_dataset(configs, split='val')
 
 train_dataset, val_dataset = prepare_datasets(configs)
 
