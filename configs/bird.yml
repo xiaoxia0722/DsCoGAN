@@ -17,8 +17,8 @@ batch_size: 16
 nf: 32
 ch_size: 3
 resume_epoch: 1
-resume_model_path: ./output/
-output: ./output/
+resume_model_path: ./output/cub
+output: ./output/cub
 mode: 'train'
 tensorboard: True
 params: False
